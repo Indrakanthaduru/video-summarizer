@@ -1,0 +1,170 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0c0c1e;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-section {
+    background-image: url('https://images.unsplash.com/photo-1522252234503-e356532cafd5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 3.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #ff4f4f;
+}
+
+.summarizer-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-upload-label {
+    background-color: #1a1a3a;
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+    border: 2px dashed #ff6b6b;
+}
+
+.file-upload-label:hover {
+    background-color: #2a2a4a;
+}
+
+#fileName {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    cursor: pointer;
+    background: linear-gradient(145deg, #6C63FF, #6013AC, #db0134);
+    transition: all 0.25s;
+}
+
+.summary-section {
+    margin-top: 30px;
+}
+
+textarea {
+    width: 100%;
+    max-width: 700px;
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #1a1a3a;
+    color: #fff;
+    font-size: 1.1em;
+    resize: none;
+    margin: 0 auto;
+    display: block;
+}
+
+#response {
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #ff6b6b;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    margin: 20px auto;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+select {
+    background-color: #1a1a3a;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.submit-button-container {
+    position: relative;
+    display: inline-block; /* To wrap the button */
+    margin-top: 20px;
+}
+
+.submit-button-container button {
+    margin: 0; /* Reset margin */
+}
+
+.hover-icon {
+    position: absolute;
+    right: 15px; /* Position inside the button */
+    top: 50%;
+    transform: translateY(-50%) translateX(70px); /* Initial position, combined transforms */
+    font-size: 1.2em;
+    opacity: 0; /* Hidden by default */
+    transition: all 0.25s; /* Use user's transition */
+}
+
+.submit-button-container:hover .hover-icon {
+    opacity: 1; /* Show on hover */
+    transform: translateY(-50%) translateX(30px); /* Final position on hover */
+}

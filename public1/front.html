@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Video Summarizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="hero-section">
+        <div class="container">
+            <h1>AI Video to Text Summary</h1>
+            <p>Automatically convert your videos into text summaries with our AI-powered tool.</p>
+            <a href="#summarizer" class="cta-button">Try it now</a>
+        </div>
+    </div>
+
+    <div class="summarizer-section" id="summarizer">
+        <div class="container">
+            <h2>Upload Your Video</h2>
+            <form id="videoForm">
+                <label for="videoFile" class="file-upload-label">Choose Video</label>
+                <input type="file" name="videoFile" id="videoFile" accept="video/*" />
+                <div id="fileName"></div>
+                <br><br>
+                <div class="submit-button-container">
+                    <button type="submit">Generate Summary</button>
+                    <span class="hover-icon">➡️</span>
+                </div>
+            </form>
+            <div class="loader" id="loader"></div>
+            <div id="response"></div>
+            <div class="summary-section">
+                <h2>Summary</h2>
+                <textarea id="summary" rows="15" cols="50" readonly></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('videoForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const loader = document.getElementById('loader');
+            const responseDiv = document.getElementById('response');
+            const summaryTextarea = document.getElementById('summary');
+
+            loader.style.display = 'block';
+            responseDiv.textContent = '';
+            summaryTextarea.value = '';
+    
+            const formData = new FormData(this);
+            try {
+                const response = await fetch('http://localhost:3001/upload', {
+                    method: 'POST',
+                    body: formData,
+                });
+        
+                if (!response.ok) {
+                    const errorMessage = await response.text();
+                    responseDiv.textContent = `Error: ${errorMessage}`;
+                } else {
+                    const result = await response.json();
+                    summaryTextarea.value = result.summary;
+                }
+            } catch (error) {
+                responseDiv.textContent = `Error: ${error.message}`;
+            } finally {
+                loader.style.display = 'none';
+            }
+        });
+
+        document.getElementById('videoFile').addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : 'No file selected';
+            document.getElementById('fileName').textContent = `Selected file: ${fileName}`;
+        });
+    </script>
+
+</body>
+</html>
